@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="icon" type="image/png" href="./favicon/favicon.png">
+</head>
+
+<body class="bg-[#8758ff]">
+    <div class="bg-[#1A1A40] mx-auto mt-22.5 rounded-md w-full max-w-lg">
+        <div class="p-[43px_33px_48px]">
+            <!-- Heading -->
+            <h1 class="mb-7.5 font-bold text-white text-4xl text-center page-heading">Get Things Done !</h1>
+
+            <!-- form -->
+            <form action="" autocomplete="off" id="todo-form" class="flex bg-[#8758FF] mb-8.25 w-full">
+                <input type="text" id="todo-input"
+                    class="flex-1 bg-[#1A1A40] px-5 py-3 border border-[#8758FF] outline-none min-w-0 text-white placeholder:text-[#646681]"
+                    placeholder="What is the task today?" spellcheck="false" />
+                <button id="submit"
+                    class="flex justify-center items-center bg-[#8758FF] px-2.25 py-3 text-white cursor-pointer"
+                    onmousedown="event.preventDefault()">Add
+                    Task</button>
+            </form>
+
+            <!-- Task list -->
+            <ul id="task-list" class="flex flex-col gap-3.75"></ul>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
+
+</html>
