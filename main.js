@@ -106,7 +106,7 @@
 //                                     class="flex-1 bg-[#1A1A40] px-5 py-3 border border-[#8758FF] outline-none min-w-0 text-white placeholder:text-[#646681] edit-input"
 //                                     placeholder="Update task" value="${task.title}" spellcheck="false" />
 //                                 <button
-                                     
+
 //                                     class="flex justify-center items-center bg-[#8758FF] px-2.25 py-3 text-white cursor-pointer update"
 //                                     onmousedown="event.preventDefault()">Update</button>
 //                         </form>`;
@@ -143,7 +143,6 @@
 // taskList.addEventListener("click", handleTasksAction);
 // renderTask();
 
-
 // ------- Dom ------- //
 const taskList = document.querySelector("#task-list");
 const form = document.querySelector("#todo-form");
@@ -170,7 +169,12 @@ const ICONS = {
                         </svg>`,
 };
 
-// ----- Utils ------ //
+function escapeHTML(html) {
+    const div = document.createElement("div");
+    div.innerText = html;
+    return div.innerHTML;
+}
+// ----- ID ------ //
 const createId = () => Date.now().toString(36);
 
 // ------ State and Storage ------ //
@@ -211,7 +215,7 @@ function viewItemHtml(task) {
         <li class="flex justify-between items-center bg-[#8758ff] px-4.5 py-3.75 rounded-md w-full cursor-pointer task-item"
             data-id="${task.id}">
             <span data-action="completed"
-                class="text-white text-xl ${task.completed ? "line-through" : ""}">${task.title}</span>
+                class="text-white text-xl ${task.completed ? "line-through" : ""}">${escapeHTML(task.title)}</span>
             <div class="flex gap-3">
                 ${ICONS.edit}
                 ${ICONS.delete}
@@ -224,7 +228,7 @@ function editItemHTML(task) {
         <form autocomplete="off" data-id="${task.id}"
             class="flex bg-[#8758FF] mb-8.25 w-full edit-form">
             <input type="text" spellcheck="false" placeholder="Update task"
-                value="${task.title}"
+                value="${escapeHTML(task.title)}"
                 class="flex-1 bg-[#1A1A40] px-5 py-3 border border-[#8758FF] outline-none min-w-0 text-white placeholder:text-[#646681] edit-input" />
             <button class="flex justify-center items-center bg-[#8758FF] px-2.25 py-3 text-white cursor-pointer">
                 Update
@@ -315,4 +319,3 @@ form.addEventListener("submit", addTask);
 taskList.addEventListener("click", handleTaskClick);
 taskList.addEventListener("submit", handleUpdateSubmit);
 render();
-
